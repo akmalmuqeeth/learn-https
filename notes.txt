@@ -1,0 +1,12 @@
+
+
+
+
+create private key
+openssl genrsa -out certs/server/my-server-private.key.pem 2048
+
+create certificate signing request(csr)
+openssl req -new   -sha256   -key certs/server/my-server-private.key.pem   -out certs/tmp/my-server.csr.pem   -subj "/C=US/ST=Utah/L=Provo/O=ACME App Client/CN=www.example.com"
+
+sign the csr
+openssl x509   -req -in certs/tmp/my-server.csr.pem   -sha256   -CA certs/ca/my-root-ca.crt.pem   -CAkey certs/ca/my-root-ca.key.pem   -CAcreateserial   -out certs/server/my-server.crt.pem   -days 2
