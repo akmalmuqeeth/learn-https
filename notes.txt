@@ -1,7 +1,3 @@
-
-
-
-
 create private key
 openssl genrsa -out certs/server/my-server-private.key.pem 2048
 
